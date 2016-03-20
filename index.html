@@ -1,27 +1,31 @@
 <!DOCTYPE html>
-<!-- HTML5 Hello world by kirupa - http://www.kirupa.com/html5/getting_your_feet_wet_html5_pg1.htm -->
-<html lang="en-us">
+
+<html lang="UA-ua">
 
 <head>
 <meta charset="utf-8">
 <title>DAS KOTTAN POKEDEX</title>
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-<!--Bootstrap Latest compiled and minified CSS 20-03-2016 -->
+<!--Bootstrap CDN Latest compiled and minified CSS 20-03-2016 -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 <!--angular from cdn-->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
 
-<!--integrate bootstrap with angular worked with this previously and feel comfortable-->
+<!--integrate bootstrap with angular. I worked with this previously and feel comfortable-->
 <script type="text/javascript" src="js/ui-bootstrap-tpls-1.2.4.min.js"></script>
 
 <link rel="stylesheet" href="css/app.css" type="text/css" />
+
+<!--POKEDEX SPA-->
+<script type="text/javascript" src="js/app.js"></script>
+
 </head>
 
-<body>
-    <div >
-        <p id="helloText">helloText</p>
+<body ng-app="pokedexApp">
+    <div ng-controller="mainController">
+        <p id="helloText" ng-model="testModelValue">{{testModelValue.text}}</p>
     </div>
 </body>
 </html>
