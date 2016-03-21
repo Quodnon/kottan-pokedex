@@ -4,6 +4,7 @@
 
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>DAS KOTTAN POKEDEX</title>
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
@@ -12,7 +13,7 @@
 
 <!--angular from cdn-->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
-
+<script type="text/javascript" src="js/angular-resource.min.js"></script>
 <!--integrate bootstrap with angular. I worked with this previously and feel comfortable-->
 <script type="text/javascript" src="js/ui-bootstrap-tpls-1.2.4.min.js"></script>
 
@@ -24,8 +25,27 @@
 </head>
 
 <body ng-app="pokedexApp">
-    <div ng-controller="mainController">
-        <p id="helloText" ng-model="testModelValue">{{testModelValue.text}}</p>
+    <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center pokedex-header">
+            <h1>POKEDEX</h1>
     </div>
+    <div class='container'>
+        <div class="row">
+            <H1 class='text-center'>FILTERS HERE on selected pokemon</H1>
+        </div>
+        <!--repeater of pokemons
+            todo: convert inner things into directives
+        --->
+        
+        <div class='col-md-6 col-lg-6 col-sm-6 col-xs-6' ng-controller="pokemonListController">
+            <div ng-repeat="pokemon in pokemons">
+                <div class='col-md-4 col-lg-4 col-sm-4 col-xs-12'>{{pokemon.name}}</div>
+            </div>
+        <div class="row">
+            <button class="btn-lg btn-warning" ng-hide="noMorePokemons" ng-click='loadMore()'>I NEED MOAR!</button>
+        </div>
+        </div>
+        
+        
+    </<div>
 </body>
 </html>
