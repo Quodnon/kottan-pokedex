@@ -15,7 +15,7 @@ pokedexApp.factory("Pokemons",function($resource){
     return $resource(pokemonApiHost+"pokemon/?limit=:limit&offset=:offset");
 });
 
-var pokemonListController=pokedexApp.controller("pokemonListController",function($scope,Pokemons){
+var pokemonListController=pokedexApp.controller("pokemonListController",function($scope,Pokemons,$location,$anchorScroll){
     
     $scope.noMorePokemons=false;
     $scope.showDetailsOfPokemon=false;
@@ -41,11 +41,13 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
     $scope.switchToPokemon = function (pokemon) {
         $scope.selectedPokemon=pokemon;
         $scope.showDetailsOfPokemon=true;
-        document.getElementById('#poke-details').focus();
+        $location.hash('detail_'+pokemon.name);
+        $anchorScroll();
     };
 
 
-    //button 
+    //кнопка загрузки еще 12-ти покемончиков. 
+    //руками пересчитываем смещение
     $scope.loadMore = function () {
         try{
             Pokemons.get({limit:$scope.limit, offset:$scope.offset},function(data) {
@@ -63,6 +65,7 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
     }
 });
 
+//директива маленькой карточки покемона
 pokemonListController.directive("pokeCard",function(){
     return{
         restrict:'E',
@@ -70,6 +73,8 @@ pokemonListController.directive("pokeCard",function(){
     }
 });    
 
+
+//директива детальной информации о покемоне
 pokemonListController.directive('pokeInfo',function() {
     return {
         restrict:'E',

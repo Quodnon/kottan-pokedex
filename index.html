@@ -31,17 +31,14 @@
         <div class="row filter-area">
             <H1 class='text-center'>FILTERS HERE on selected pokemon</H1>
         </div>
-        <!--repeater of pokemons
-            todo: convert inner things into directives
-        --->
         <div class='row'  ng-controller="pokemonListController">
-
-            <poke-info id='poke-details' ng-show='showDetailsOfPokemon' 
-                class="poke-details col-md-6 col-md-push-6" 
+            <poke-info ng-show='showDetailsOfPokemon' 
+                id="detail_{{selectedPokemon.name}}"
+                ng-class="['poke-details','col-md-6', {'col-md-push-6':showDetailsOfPokemon}]" 
                 ng-model='selectedPokemon'>
             </poke-info>
 
-            <div class='pokemon-list col-lg-12 col-md-6'>
+            <div ng-class="['pokemon-list', 'col-md-6', {'col-md-pull-6':showDetailsOfPokemon}]">
                 <div ng-repeat="pokemon in pokemons">
                     <poke-card class='PokeCard col-md-4 col-lg-4 col-sm-4 col-xs-12' ng-click='switchToPokemon(pokemon)' ng-model="pokemon"></poke-card>
                 </div>
@@ -50,7 +47,6 @@
                 </div>
             </div>    
         </div>
- 
     </div>
 </body>
 <!--POKEDEX SPA-->
