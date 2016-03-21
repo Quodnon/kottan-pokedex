@@ -15,7 +15,7 @@ pokedexApp.factory("Pokemons",function($resource){
     return $resource(pokemonApiHost+"pokemon/?limit=:limit&offset=:offset");
 });
 
-var pokemonListController=pokedexApp.controller("pokemonListController",function($scope,Pokemons,$location,$anchorScroll){
+var pokemonListController=pokedexApp.controller("pokemonListController",function($scope,Pokemons,$window){
     
     $scope.noMorePokemons=false;
     $scope.showDetailsOfPokemon=false;
@@ -41,8 +41,8 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
     $scope.switchToPokemon = function (pokemon) {
         $scope.selectedPokemon=pokemon;
         $scope.showDetailsOfPokemon=true;
-        $location.hash('detail_'+pokemon.name);
-        $anchorScroll();
+        
+        document.body.scrollTop=0;
     };
 
 
