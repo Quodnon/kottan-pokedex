@@ -32,13 +32,13 @@
             <H1 class='text-center'>FILTERS HERE on selected pokemon</H1>
         </div>
         <div class='row'  ng-controller="pokemonListController">
-            <poke-info ng-show='showDetailsOfPokemon' 
-                id="detail_{{selectedPokemon.name}}"
-                ng-class="['poke-details','col-md-6', {'col-md-push-6':showDetailsOfPokemon}]" 
-                ng-model='selectedPokemon'>
-            </poke-info>
-
-            <div ng-class="['pokemon-list',{'col-lg-12':!showDetailsOfPokemon}, {'col-md-6':showDetailsOfPokemon}, {'col-md-pull-6':showDetailsOfPokemon}]">
+            <div ng-class="['detail_container',{'col-lg-12':!showDetailsOfPokemon}, {'col-md-6':showDetailsOfPokemon}, {'col-sm-6':showDetailsOfPokemon},{'col-sm-push-6':showDetailsOfPokemon},{'col-md-push-6':showDetailsOfPokemon}]" ng-show='showDetailsOfPokemon' >
+                <poke-info id="detail_{{selectedPokemon.name}}"
+                    ng-class="['poke-details','text-center']" 
+                    ng-model='selectedPokemon'>
+                </poke-info>
+            </div>
+            <div ng-class="['pokemon-list',{'col-lg-12':!showDetailsOfPokemon}, {'col-sm-6':showDetailsOfPokemon},{'col-sm-pull-6':showDetailsOfPokemon},{'col-md-6':showDetailsOfPokemon}, {'col-md-pull-6':showDetailsOfPokemon}]">
                 <div ng-repeat="pokemon in pokemons">
                     <poke-card class='PokeCard col-md-4 col-lg-4 col-sm-4 col-xs-12' ng-click='switchToPokemon(pokemon)' ng-model="pokemon"></poke-card>
                 </div>

@@ -42,7 +42,7 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
         $scope.selectedPokemon=pokemon;
         $scope.showDetailsOfPokemon=true;
         
-        document.body.scrollTop=0;
+        //document.body.scrollTop=0;
     };
 
 
