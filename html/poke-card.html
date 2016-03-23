@@ -1,2 +1,6 @@
-<div></div><h2>{{pokemon.name}}</h2></div>
-<img class='image-responsive' ng-src="https://pokeapi.co/media/img/{{pokemon.pkdx_id}}.png" alt="{{pokemon.name}}" />
+<div class='container'><img class='image-responsive' ng-src="https://pokeapi.co/media/img/{{pokemon.pkdx_id}}.png" alt="{{pokemon.name}}" />
+    <div><h3>{{pokemon.name}} #{{pokemon.pkdx_id}}</h3></div>
+    <span ng-repeat="type in pokemon.types">
+        <span ng-class="[type.name]">{{type.name}} </span>
+    </span>
+</div>

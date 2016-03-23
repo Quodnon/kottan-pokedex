@@ -1,10 +1,8 @@
 .pokedex-header{
     background-color: orange;
 }
-.detail_container{
-    position:relative;
-}
 
+/*о господи, еще нужно чтобы див фильтров собирался по-человечески и при скролле оставался доступен.:whale:*/
 .filter-area{
     background-color: #ffdea3;  
 }
@@ -15,15 +13,58 @@
 }
  
 .PokeCard{
-    border: dotted orange;
     border-radius: 5%;
     height: 200px;
     margin-bottom: 10px;
 }
+
+/* ничего себе! пришлось сделать медиа-запрос для того,
+чтобы детали покемона при широком экране  показывались справа и не прокручивались.
+А это необходимая оберточка*/
+.detail_container{
+    position:relative;
+}
+
 @media (min-width: 768px) {
+    .detail_container{
+        margin-top: 15%
+
+    }
  
    .poke-details{
-       
+           
         position: fixed;
     }
+}
+
+.normal{
+    background-color: white;
+    color: black;
+}
+
+.fire{
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+.water{
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+}
+.flying {
+    background-color: grey;
+    color: white;
+    font-weight: bold;
+}
+.bug{
+    background-color: brown;
+    color: white;
+    font-weight: bold;
+}
+.poison{
+    background-color: green;
+    color: white;
+    font-weight: ;
 }

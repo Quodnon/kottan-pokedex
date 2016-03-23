@@ -14,6 +14,7 @@
 <!--angular from cdn-->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
 <script type="text/javascript" src="js/angular-resource.min.js"></script>
+
 <!--integrate bootstrap with angular. I worked with this previously and feel comfortable-->
 <script type="text/javascript" src="js/ui-bootstrap-tpls-1.2.4.min.js"></script>
 
@@ -40,7 +41,7 @@
             </div>
             <div ng-class="['pokemon-list',{'col-lg-12':!showDetailsOfPokemon}, {'col-sm-6':showDetailsOfPokemon},{'col-sm-pull-6':showDetailsOfPokemon},{'col-md-6':showDetailsOfPokemon}, {'col-md-pull-6':showDetailsOfPokemon}]">
                 <div ng-repeat="pokemon in pokemons">
-                    <poke-card class='PokeCard col-md-4 col-lg-4 col-sm-4 col-xs-12' ng-click='switchToPokemon(pokemon)' ng-model="pokemon"></poke-card>
+                    <poke-card class='PokeCard col-md-4 col-lg-4 col-sm-6 col-xs-12' ng-click='switchToPokemon(pokemon)' ng-model="pokemon"></poke-card>
                 </div>
                 <div class="row text-center">
                     <button class="btn-lg btn-warning" ng-hide="noMorePokemons" ng-click='loadMore()'>I NEED MOAR POKEMONS!</button>
