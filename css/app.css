@@ -26,11 +26,6 @@
 }
 
 @media (min-width: 768px) {
-    .detail_container{
-        margin-top: 15%
-
-    }
- 
    .poke-details{
            
         position: fixed;
@@ -66,5 +61,4 @@
 .poison{
     background-color: green;
     color: white;
-    font-weight: ;
 }

@@ -1,2 +1,44 @@
-<div>{{selectedPokemon.name}}</div>
 <img class='image-responsive'  ng-src="https://pokeapi.co/media/img/{{selectedPokemon.pkdx_id}}.png" alt="{{selectedPokemon.name}}" />
+<div><b>{{selectedPokemon.name}} #{{selectedPokemon.pkdx_id}}</b></div>
+<table class='table'>
+    <tr>
+        <td>Type</td>
+        <td>
+            <div ng-repeat="type in selectedPokemon.types">
+                <span ng-class="[type.name]">{{type.name}} </span>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>Attack</td>
+        <td>{{selectedPokemon.attack}}</td>
+    </tr>
+    <tr>
+        <td>Defense</td>
+        <td>{{selectedPokemon.defense}}</td>
+    </tr>
+    <tr>
+        <td>HP</td>
+        <td>{{selectedPokemon.hp}}</td>
+    </tr>
+    <tr>
+        <td>SP Attack</td>
+        <td>{{selectedPokemon.sp_atk}}</td>
+    </tr>
+    <tr>
+        <td>SP Defense</td>
+        <td>{{selectedPokemon.sp_def}}</td>
+    </tr>
+    <tr>
+        <td>Speed</td>
+        <td>{{selectedPokemon.speed}}</td>
+    </tr>
+    <tr>
+        <td>Weight</td>
+        <td>{{selectedPokemon.weight}}</td>
+    </tr>
+    <tr>
+        <td>Total moves</td>
+        <td>{{selectedPokemon.moves.length}}</td>
+    </tr>
+</table>
