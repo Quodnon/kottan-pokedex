@@ -52,6 +52,9 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
     });
 
     Types.get({},function (data) {
+        /**
+         * добавил через мап одно свойство - фильтры у нас сразу "включены"
+         */
         $scope.pokeTypes=data.objects.map(function(currentValue,currentIndex,array){
             currentValue.checked=true;
             return currentValue;
@@ -90,14 +93,14 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
      * выбрать-невыбрать все чекбоксы
      */
      $scope.selDesFilters = function(){
-         $scope.pokeTypes=$scope.pokeTypes.map(function (curr,ind,array) {
+         //нечего мапы плодить. через фор перебираем галки и ставим-снимаем
+         for (var i = 0; i < $scope.pokeTypes.length; i++) {
              if($scope.globalFilterCheck===true){
-                 curr.checked=false;
+                 $scope.pokeTypes[i].checked=false;
              } else{
-                 curr.checked=true;
+                 $scope.pokeTypes[i].checked=true;
              }
-             return curr;
-         })
+         }
         $scope.globalFilterCheck=!$scope.globalFilterCheck;
      }
 });
