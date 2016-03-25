@@ -3,13 +3,14 @@
             //но ведь я буду писать на ES5(по крайней мере я так думаю)
             // и нет, я не буду в этот раз ковыряться с ие8
 
-//сделал код простынёй. не вижу смысла размазывать код по файлам на текущем этапе
+//сделал код простынёй.
+//не вижу смысла размазывать код по файлам на текущем этапе
 
 
 var pokedexApp=angular.module("pokedexApp",['ngResource']);
 
-//мы используем первую версию апи как в тз
-//получаем весь датасет сразу
+//мы используем первую версию апи КАК В ТЗ
+//получаем первый датасет при загрузке
 var pokemonApiHost="https://pokeapi.co/api/v1/";
 
 //фабрика для получения данных по покемонам
@@ -55,7 +56,7 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
 
     Types.get({},function (data) {
         /**
-         * добавил через мап одно свойство - фильтры у нас сразу "включены"
+         * добавляем через мап одно свойство - фильтры у нас сразу "включены"
          */
         $scope.pokeTypes=data.objects.map(function(currentValue,currentIndex,array){
             currentValue.checked=true;
@@ -96,19 +97,19 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
      */
      $scope.selDesFilters = function(){
          //нечего мапы плодить. через фор перебираем галки и ставим-снимаем
-         for (var i = 0; i < $scope.pokeTypes.length; i++) {
-             if($scope.globalFilterCheck===true){
-                 $scope.pokeTypes[i].checked=false;
-             } else{
-                 $scope.pokeTypes[i].checked=true;
-             }
-         }
+        for (var i = 0; i < $scope.pokeTypes.length; i++) {
+            if($scope.globalFilterCheck===true){
+                $scope.pokeTypes[i].checked=false;
+            } else{
+                $scope.pokeTypes[i].checked=true;
+            }
+        }
         $scope.globalFilterCheck=!$scope.globalFilterCheck;
+        if($scope.globalFilterCheck===false){
+            $scope.showDetailsOfPokemon=false;
+        }
      }
-     $scope.filterType=function () {
-         // body...
-         $scope.apply();
-     }
+
 });
 
 
@@ -129,8 +130,8 @@ pokemonListController.directive('pokeInfo',function() {
     };
 });
 
-//придется сделять кастомный фильтр для обработки пересечения двух массивов
-// чесный и быстрый разбор отсюда http://stackoverflow.com/questions/22024631/angularjs-filter-based-on-array-of-strings
+// сделяль кастомный фильтр для обработки пересечения двух массивов
+// честный и быстрый разбор отсюда http://stackoverflow.com/questions/22024631/angularjs-filter-based-on-array-of-strings
 pokemonListController.filter('selectedPoketype', function () {
     return function (pokemons, globalPokeTypes) {
         return pokemons.filter(function(pokemon){
@@ -140,6 +141,7 @@ pokemonListController.filter('selectedPoketype', function () {
             for( var j=0;j<types.length;j++){
                 for (var i = 0; i<globalPokeTypes.length; i++) {
                     if(globalPokeTypes[i].name.toLowerCase()===types[j].name.toLowerCase()){
+                        // у нас совпали типы в массивах проверяем их на "чек"
                         if(globalPokeTypes[i].checked===true){
                             result=true;
                         } else {

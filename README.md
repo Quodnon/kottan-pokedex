@@ -8,6 +8,8 @@ DAS POKEDEX !
 ----------
 [вмикаємо музичку для душі та покотились](https://www.youtube.com/watch?v=he7jbAxP5ec)
 
+
+![](http://s5.pikabu.ru/post_img/big/2015/04/23/8/1429794583_343353562.png)
 [тут будет урл]()
 
 
@@ -84,3 +86,6 @@ Back-end:
 -------
 ![](https://scontent-frt3-1.cdninstagram.com/t51.2885-15/e35/12826036_1008594852554644_380765953_n.jpg?ig_cache_key=MTIwNjQ0NTg4MzQ2NDg4NTk0NQ%3D%3D.2)
 *Просто ежик говорит спасибо, что дочитали до конца ридми.*
+
+
+![](http://s1.funon.cc/img/orig/201504/25/553aaffe3fc1f.png)

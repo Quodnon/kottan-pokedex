@@ -29,7 +29,7 @@
         <div class="row filter-area">
             <button ng-click='selDesFilters()' class='btn btn-warning btn-xs col-lg-2 col-md-2 col-sm-2 col-xs-6'>all</button>
             <span class='col-lg-2 col-md-2 col-sm-2 col-xs-6' ng-repeat="type in pokeTypes | availableTypes:pokemons">
-                <input type="checkbox" ng-model='type.checked' ng-checked='type.checked' ng-hide="itemExistsInResults(type,pokemons)" ><span  ng-class='[type.name.toLowerCase()]'>{{type.name.toLowerCase()}}</span></input>
+                <input type="checkbox" ng-model='type.checked' ng-hide="itemExistsInResults(type,pokemons)" ><span  ng-class='[type.name.toLowerCase()]'>{{type.name.toLowerCase()}}</span></input>
             </span>
         </div>
         <div class='row' >
