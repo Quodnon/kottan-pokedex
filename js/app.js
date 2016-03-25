@@ -35,10 +35,11 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
     $scope.pokemons=null;
     $scope.selectedPokemon=null;
     $scope.pokeTypes=null;
+    $scope.visiblePokemons=null;
     
     //параметры для запросов
     $scope.nextPokemons="";
-    $scope.limit=12;
+    $scope.limit=50;
     $scope.offset=0;
     
     
@@ -46,6 +47,7 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
     //получение базового массива покемонов в самом начале
     Pokemons.get({limit:$scope.limit, offset:$scope.offset},function(data){
         $scope.pokemons=data.objects;
+        $scope.visiblePokemons=data.objects;
         $scope.nextPokemons=data.meta.next;
         $scope.offset+=$scope.limit;
         
@@ -72,7 +74,7 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
     
     };
  
-    //загрузка еще 12-ти покемончиков. 
+    //загрузка еще 50-ти покемончиков. 
     //руками пересчитываем смещение
     $scope.loadMore = function () {
         try{
@@ -103,6 +105,10 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
          }
         $scope.globalFilterCheck=!$scope.globalFilterCheck;
      }
+     $scope.filterType=function () {
+         // body...
+         $scope.apply();
+     }
 });
 
 
@@ -121,4 +127,55 @@ pokemonListController.directive('pokeInfo',function() {
         restrict:'E',
         templateUrl:'html/poke-info.html'
     };
+});
+
+//придется сделять кастомный фильтр для обработки пересечения двух массивов
+// чесный и быстрый разбор отсюда http://stackoverflow.com/questions/22024631/angularjs-filter-based-on-array-of-strings
+pokemonListController.filter('selectedPoketype', function () {
+    return function (pokemons, globalPokeTypes) {
+        return pokemons.filter(function(pokemon){
+            var result=false;
+            var types=pokemon.types;
+            
+            for( var j=0;j<types.length;j++){
+                for (var i = 0; i<globalPokeTypes.length; i++) {
+                    if(globalPokeTypes[i].name.toLowerCase()===types[j].name.toLowerCase()){
+                        if(globalPokeTypes[i].checked===true){
+                            result=true;
+                        } else {
+                            // опп. хоть один не чекнутый - выкидываем из просмотра
+                            result=false;
+                            return result;
+                        }
+                    } else {
+                        continue;
+                    }
+                }
+            }
+            return result;
+        });
+            
+    }
+});
+
+//фильтр типов покемонов которые есть в загруженных покемонах
+pokemonListController.filter('availableTypes', function () {
+    return function (types, pokemons) {
+        return types.filter(function(type){
+            debugger;
+            var result=false;
+            for (var i=0;i<pokemons.length;i++){
+                for( var j=0;j<pokemons[i].types.length;j++){
+                    if(pokemons[i].types[j].name===type.name.toLowerCase()){
+                        result=true;
+                        return result;
+                    }else {
+                        continue
+                    }
+                }
+            }
+            return result;
+        });
+            
+    }
 });

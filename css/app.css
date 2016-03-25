@@ -38,13 +38,13 @@
 }
 
 .fire{
-    background-color: red;
+    background-color: #c55656;
     color: white;
     font-weight: bold;
 }
 
 .water{
-    background-color: blue;
+    background-color: #5a81b6;
     color: white;
     font-weight: bold;
 }
@@ -60,5 +60,75 @@
 }
 .poison{
     background-color: green;
+    color: white;
+}
+.fighting{
+    background-color: #652922;
+    color :white;
+}
+.rock{
+    background-color: #676767;
+    color: white;
+    font-weight: bold;
+}
+.ghost{
+    background-color: #def1f4;
+    font-weight: bold;
+}
+.grass{
+    background-color: #88fd7d;
+    font-weight:bold;
+    color: white;
+}
+.ice{
+    background-color:#dffdff; 
+    font-weight:bold;
+}
+.dark{
+    background-color:#760e7c; 
+    font-weight:bold;
+    color: white;
+}
+.unknown{
+    background-color:#000000; 
+    font-weight:bold;
+    color: white;
+}
+.psychic{
+    background-color:#d479cc; 
+    font-weight:bold;
+    color: white;
+}
+.ground{
+    background-color:#6f1919; 
+    font-weight:bold;
+    color: white;
+}
+.steel{
+    background-color:#90b9c5; 
+    font-weight:bold;
+    color: white;
+}
+.electric{
+    background-color:#87cfdf; 
+    font-weight:bold;
+    color: white;
+}
+
+.dragon{
+    background-color:#a71616; 
+    font-weight:bold;
+    color: white;
+}
+
+.fairy{
+    background-color:#d06ebd; 
+    font-weight:bold;
+    color: white;
+}
+
+.shadow{
+    background-color:#6f5681; 
+    font-weight:bold;
     color: white;
 }
