@@ -13,8 +13,8 @@
 }
  
 .PokeCard{
-    border-radius: 5%;
-    height: 200px;
+    outline:1px solid orange;
+    height: 220px;
     margin-bottom: 10px;
 }
 
@@ -31,7 +31,13 @@
         position: fixed;
     }
 }
+.poke-title{
+    word-break: break-all;
+}
 
+.type{
+    margin-right: 3px;
+}
 .normal{
     background-color: white;
     color: black;

@@ -1,3 +1,4 @@
+<!--copyright Mykola Denysyuk special for Kottans-->
 <!DOCTYPE html>
 
 <html lang="UA-ua">
@@ -9,10 +10,15 @@
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
 <!--Bootstrap CDN Latest compiled and minified CSS 20-03-2016 -->
+<!-- убитись вареником, в еджі  на запити з цдн валяться помилки 403 ,хоча все працює
+лінк на помилку
+http://stackoverflow.com/questions/33533605/twitter-bootstrap-alpha-4-0-404-403-response-from-cdns-in-ms-edge
+зміна протоколу нічого не дасть -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 <!--angular from cdn-->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+<!--add ng-source here-->
 <script type="text/javascript" src="js/angular-resource.min.js"></script>
 
 <!--integrate bootstrap with angular. I worked with this previously and feel comfortable-->
@@ -22,34 +28,40 @@
 </head>
 
 <body ng-app="pokedexApp">
+    <!--HEADER--->
     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center pokedex-header">
-            <h1>Quodnon's POKEDEX!!</h1>
+            <h1>DAS POKEDEX</h1>
     </div>
     <div class='container'  ng-controller="pokemonListController">
+        <!--FILTERS---->
         <div class="row filter-area">
-            <button ng-click='selDesFilters()' class='btn btn-warning btn-xs col-lg-2 col-md-2 col-sm-2 col-xs-6'>all</button>
+            <button id='showHideAll' ng-click='selDesFilters()' class='btn btn-warning btn-xs col-lg-2 col-md-2 col-sm-2 col-xs-6'>all</button>
             <span class='col-lg-2 col-md-2 col-sm-2 col-xs-6' ng-repeat="type in pokeTypes | availableTypes:pokemons">
-                <input type="checkbox" ng-model='type.checked' ng-hide="itemExistsInResults(type,pokemons)" ><span  ng-class='[type.name.toLowerCase()]'>{{type.name.toLowerCase()}}</span></input>
+                <input type="checkbox" ng-click='filterType()' ng-model='type.checked' ng-hide="itemExistsInResults(type,pokemons)" ><span  ng-class='[type.name.toLowerCase()]'>{{type.name.toLowerCase()}}</span></input>
             </span>
         </div>
+        <!--CONTENT AREA-->
         <div class='row' >
-            <div ng-class="['detail_container',{'col-lg-12':!showDetailsOfPokemon}, {'col-md-6':showDetailsOfPokemon}, {'col-sm-6':showDetailsOfPokemon},{'col-sm-push-6':showDetailsOfPokemon},{'col-md-push-6':showDetailsOfPokemon}]" ng-show='showDetailsOfPokemon' >
+            <!--POKEMON DETAILS-->
+            <div id='pokeDetailInfo' ng-class="['detail_container',{'col-lg-12':!showDetailsOfPokemon}, {'col-md-6':showDetailsOfPokemon}, {'col-sm-6':showDetailsOfPokemon},{'col-sm-push-6':showDetailsOfPokemon},{'col-md-push-6':showDetailsOfPokemon}]" ng-show='showDetailsOfPokemon' >
                 <poke-info id="detail_{{selectedPokemon.name}}"
                     ng-class="['poke-details','text-center']" 
                     ng-model='selectedPokemon'>
                 </poke-info>
             </div>
-            <div ng-class="['pokemon-list',{'col-lg-12':!showDetailsOfPokemon}, {'col-sm-6':showDetailsOfPokemon},{'col-sm-pull-6':showDetailsOfPokemon},{'col-md-6':showDetailsOfPokemon}, {'col-md-pull-6':showDetailsOfPokemon}]">
+            <!--POKEMON LIST-->
+            <div id='pokeList' ng-class="['pokemon-list',{'col-lg-12':!showDetailsOfPokemon}, {'col-sm-6':showDetailsOfPokemon},{'col-sm-pull-6':showDetailsOfPokemon},{'col-md-6':showDetailsOfPokemon}, {'col-md-pull-6':showDetailsOfPokemon}]">
                 <div ng-repeat="pokemon in pokemons | selectedPoketype:pokeTypes ">
                     <poke-card class='PokeCard col-md-4 col-lg-4 col-sm-6 col-xs-12' ng-click='switchToPokemon(pokemon)' ng-model="pokemon"></poke-card>
                 </div>
-            </div>
-        </div>
-        <div class="row text-center">
-            <button class="btn-lg btn-warning" ng-hide="noMorePokemons" ng-click='loadMore()'>I NEED MOAR POKEMONS!</button>
+                <button id='morePokemonsButton' class="btn-lg btn-warning col-md-12 col-sm-12 col-lg-12 col-xs-12" ng-hide="noMorePokemons" ng-click='loadMore()'>I NEED MOAR POKEMONS!</button>
+            </div>    
         </div>
     </div>
 </body>
+
+
+
 <!--POKEDEX SPA after we loaded all above-->
 <script type="text/javascript" src="js/app.js"></script>
 </html>

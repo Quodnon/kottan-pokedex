@@ -1,4 +1,5 @@
 /*global angular*/
+//copyright Mykola Denysyuk special for Kottans
 "use strict"; // да, да в ES6 встроен строгий режим по умолчанию,
             //но ведь я буду писать на ES5(по крайней мере я так думаю)
             // и нет, я не буду в этот раз ковыряться с ие8
@@ -40,7 +41,7 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
     
     //параметры для запросов
     $scope.nextPokemons="";
-    $scope.limit=50;
+    $scope.limit=12;
     $scope.offset=0;
     
     
@@ -75,7 +76,7 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
     
     };
  
-    //загрузка еще 50-ти покемончиков. 
+    //загрузка еще 12-ти покемончиков. 
     //руками пересчитываем смещение
     $scope.loadMore = function () {
         try{
@@ -134,6 +135,9 @@ pokemonListController.directive('pokeInfo',function() {
 // честный и быстрый разбор отсюда http://stackoverflow.com/questions/22024631/angularjs-filter-based-on-array-of-strings
 pokemonListController.filter('selectedPoketype', function () {
     return function (pokemons, globalPokeTypes) {
+        //опс. не прогрузилось
+        if (pokemons===null || globalPokeTypes===null){return}
+        // а теперь прогрузилось
         return pokemons.filter(function(pokemon){
             var result=false;
             var types=pokemon.types;
@@ -143,12 +147,10 @@ pokemonListController.filter('selectedPoketype', function () {
                     if(globalPokeTypes[i].name.toLowerCase()===types[j].name.toLowerCase()){
                         // у нас совпали типы в массивах проверяем их на "чек"
                         if(globalPokeTypes[i].checked===true){
+                            //чекнутый - показываем. чтобы скрыть психика -фейри надо снять обе галки
                             result=true;
-                        } else {
-                            // опп. хоть один не чекнутый - выкидываем из просмотра
-                            result=false;
                             return result;
-                        }
+                        } 
                     } else {
                         continue;
                     }
@@ -163,8 +165,8 @@ pokemonListController.filter('selectedPoketype', function () {
 //фильтр типов покемонов которые есть в загруженных покемонах
 pokemonListController.filter('availableTypes', function () {
     return function (types, pokemons) {
+        if (types===null || pokemons===null){return}
         return types.filter(function(type){
-            debugger;
             var result=false;
             for (var i=0;i<pokemons.length;i++){
                 for( var j=0;j<pokemons[i].types.length;j++){
