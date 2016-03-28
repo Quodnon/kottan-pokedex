@@ -70,16 +70,19 @@
 .normal{
     background-color: white;
     color: black;
+    background: linear-gradient(to top,white,white);
 }
 
 .fire{
     background-color: #c55656;
+    background: linear-gradient(to top,#bf0000, #c55656);
     color: white;
     font-weight: bold;
 }
 
 .water{
     background-color: #5a81b6;
+    background: linear-gradient(to top,#004098, #5a81b6);
     color: white;
     font-weight: bold;
 }
