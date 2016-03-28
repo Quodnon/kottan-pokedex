@@ -33,7 +33,7 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
     
     $scope.globalFilterCheck=true;
     
-    $scope.pinned=true;
+    $scope.pinned=false;
     $scope.showPinned=true;
     
     $scope.loadingPokemons=false;
