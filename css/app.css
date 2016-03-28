@@ -64,6 +64,7 @@
 
 .type{
     margin-right: 3px;
+    padding: 7px;
 }
 
 
@@ -72,6 +73,7 @@
     background-color: white;
     color: black;
     background: linear-gradient(to top,white,white);
+    
 }
 
 .fire{
@@ -91,42 +93,54 @@
     background-color: grey;
     color: white;
     font-weight: bold;
+    background: linear-gradient(to top,grey, #ffefd2);
 }
 .bug{
     background-color: brown;
     color: white;
     font-weight: bold;
+    background: linear-gradient(to top,brown, lightcoral);
 }
 .poison{
     background-color: green;
     color: white;
+    background: linear-gradient(to top,green, lawngreen);
 }
 .fighting{
     background-color: #652922;
     color :white;
+    background: linear-gradient(to top,#652922, #ffefd2);
 }
 .rock{
     background-color: #676767;
     color: white;
     font-weight: bold;
+    background: linear-gradient(to top,#676767, #90b9c5);
 }
 .ghost{
     background-color: #def1f4;
     font-weight: bold;
+    background: linear-gradient(to top,#def1f4, #90b9c5);
 }
 .grass{
     background-color: #88fd7d;
     font-weight:bold;
     color: white;
+    background: linear-gradient(to top,#88fd7d, #90b9c5);
+    
 }
 .ice{
     background-color:#dffdff; 
     font-weight:bold;
+    background: linear-gradient(to top,#dffdff, #90b9c5);
+    
 }
 .dark{
     background-color:#760e7c; 
     font-weight:bold;
     color: white;
+    background: linear-gradient(to top,#760e7c, #90b9c5);
+    
 }
 .unknown{
     background-color:#000000; 
@@ -137,37 +151,44 @@
     background-color:#d479cc; 
     font-weight:bold;
     color: white;
+    background: linear-gradient(to top,#760e7c, #90b9c5);
 }
 .ground{
     background-color:#6f1919; 
     font-weight:bold;
     color: white;
+    background: linear-gradient(to top,#6f1919, #90b9c5);
 }
 .steel{
     background-color:#90b9c5; 
     font-weight:bold;
     color: white;
+    background: linear-gradient(to top,#90b9c5, #90b9c5);
 }
 .electric{
     background-color:#87cfdf; 
     font-weight:bold;
     color: white;
+    background: linear-gradient(to top,#87cfdf, #90b9c5);
 }
 
 .dragon{
     background-color:#a71616; 
     font-weight:bold;
     color: white;
+    background: linear-gradient(to top,#a71616, #90b9c5);
 }
 
 .fairy{
     background-color:#d06ebd; 
     font-weight:bold;
     color: white;
+    background: linear-gradient(to top,#d06ebd, #d06eff);
 }
 
 .shadow{
     background-color:#6f5681; 
     font-weight:bold;
     color: white;
+    background: linear-gradient(to top,#6f5681, #90b9c5);
 }
