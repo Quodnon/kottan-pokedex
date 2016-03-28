@@ -30,12 +30,18 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
     //переменные
     $scope.noMorePokemons=false;
     $scope.showDetailsOfPokemon=false;
+    
     $scope.globalFilterCheck=true;
-    $scope.pinned=true;
+    
+    $scope.pinned=false;
+    $scope.showPinned=true;
+    
     $scope.loadingPokemons=false;
     $scope.initialLoadCompleted=false;
+    
     $scope.headerInVisible=false;
     
+    $scope.firstYPosition=0
     
     //здесь лежит основная модель
     $scope.pokemons=null;
@@ -78,7 +84,11 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
         $scope.selectedPokemon=pokemon;
         $scope.showDetailsOfPokemon=true;
         if(window.innerWidth<768){
+            $scope.showPinned=false;
+            $scope.firstYPosition=window.pageYOffset;
             window.scroll(0,0);
+        } else {
+            $scope.showPinned=true;
         }
     
     };
@@ -131,6 +141,9 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
     */
     $scope.closeDetails= function(){
         $scope.showDetailsOfPokemon=false;
+        if(window.innerWidth<768){
+            window.scroll(0,$scope.firstYPosition);
+        }
     }
     
     $scope.pinDetails =function(){
@@ -163,7 +176,6 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
     }
     //прям в контроллере подписались на скролл.
     angular.element($window).bind("scroll", function() {
-            debugger;
              if (this.pageYOffset >= 80) {
                 $scope.headerInVisible = true;
              } else {

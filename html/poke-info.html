@@ -1,7 +1,7 @@
 <div class='poke-detail-card'>
     <div class='col-md-12 text-right'>
     <!--пришпилить к центру екрана чтобы не улетало. по умолчанию вкл-->
-    <button ng-class="['btn', 'btn-xs',{'btn-warning':pinned},{'btn-default':!pinned}, 'glyphicon', 'glyphicon-pushpin']" ng-click='pinDetails()'></button>
+    <button ng-class="['btn', 'btn-xs',{'btn-warning':pinned},{'btn-default':!pinned}, 'glyphicon', 'glyphicon-pushpin']" ng-click='pinDetails()' ng-show='showPinned'></button>
     <!--сховати інфу про покемончика-->
     <button class='btn btn-xs  btn-danger glyphicon glyphicon-remove' ng-click='closeDetails()'></button>
     </div>

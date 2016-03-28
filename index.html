@@ -21,14 +21,11 @@ http://stackoverflow.com/questions/33533605/twitter-bootstrap-alpha-4-0-404-403-
 <!--add ng-source here-->
 <script type="text/javascript" src="js/angular-resource.min.js"></script>
 
-<!--integrate bootstrap with angular. I worked with this previously and feel comfortable-->
-<script type="text/javascript" src="js/ui-bootstrap-tpls-1.2.4.min.js"></script>
-
 <link rel="stylesheet" href="css/app.css" type="text/css" />
 </head>
 
 <body ng-app="pokedexApp">
-    <!--HEADER--->
+    <!--HEADER да, руцями.про лесс и сасс читал но не пользовался--->
     <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12 text-center pokedex-header">
             <h1>DAS POKEDEX</h1>
     </div>
@@ -42,7 +39,7 @@ http://stackoverflow.com/questions/33533605/twitter-bootstrap-alpha-4-0-404-403-
                 </div>                
             </span>
         </div>
-        <!--LOADER H1-->
+        <!--LOADER H1 тупим пока загружаются покемоны-->
         <div ng-class=['col-md-12','col-sm-12','col-xs-12','col-lg-12'] ng-hide='initialLoadCompleted'>
                 <h1> POKEMONS ARE LOADING.....</h1>
         </div>
@@ -55,12 +52,18 @@ http://stackoverflow.com/questions/33533605/twitter-bootstrap-alpha-4-0-404-403-
                     ng-model='selectedPokemon'>
                 </poke-info>
             </div>
+            
             <!--POKEMON LIST-->
             <div id='pokeList' ng-class="['pokemon-list',{'col-lg-12':!showDetailsOfPokemon}, {'col-sm-6':showDetailsOfPokemon},{'col-sm-pull-6':showDetailsOfPokemon},{'col-md-6':showDetailsOfPokemon}, {'col-md-pull-6':showDetailsOfPokemon}]">
+                
+                <!--покемоны как они есть-->
                 <div ng-repeat="pokemon in pokemons | selectedPoketype:pokeTypes ">
                     <poke-card class='PokeCard col-md-4 col-lg-4 col-sm-6 col-xs-12 text-center' ng-click='switchToPokemon(pokemon)' ng-model="pokemon"></poke-card>
                 </div>
+                
+                <!--догружалка покемонов-->
                 <button id='morePokemonsButton' class="btn-lg btn-warning col-md-12 col-sm-12 col-lg-12 col-xs-12" ng-hide="noMorePokemons || loadingPokemons || !initialLoadCompleted" ng-click='loadMore()'>I NEED MOAR POKEMONS!</button>
+                
                 <!--да, див выглядит как кнопка но ничего не делает-->
                 <div id='morePokemonsLoading' class="btn-lg btn-warning col-md-12 col-sm-12 col-lg-12 col-xs-12 text-center"  ng-show='loadingPokemons' >LOADING ....</div>
             </div>    
