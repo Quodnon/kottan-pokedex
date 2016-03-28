@@ -34,7 +34,7 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
     $scope.pinned=true;
     $scope.loadingPokemons=false;
     $scope.initialLoadCompleted=false;
-    $scope.headerVisible=true;
+    $scope.headerInVisible=false;
     
     
     //здесь лежит основная модель
@@ -141,7 +141,17 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
         window.scrollTo(0,0);
     };
 
-
+    //прям в контроллере подписались на скролл.
+    angular.element($window).bind("scroll", function() {
+            debugger;
+             if (this.pageYOffset >= 80) {
+                $scope.headerInVisible = true;
+             } else {
+                $scope.headerInVisible = false;
+             }
+            $scope.$apply();
+        });
+    
 });
 
 
@@ -162,23 +172,7 @@ pokemonListController.directive('pokeInfo',function() {
     };
 });
 
-
-//директива скролла
-pokemonListController.directive('scroll',function($window) {
-    debugger;
-   return function(scope, element, attrs) {
-        angular.element($window).bind("scroll", function() {
-            debugger;
-             if (this.pageYOffset >= 80) {
-                scope.headerVisible = true;
-             } else {
-                scope.headerVisible = false;
-             }
-            scope.$apply();
-        });
-    };
-});
-
+ 
 
 // сделяль кастомный фильтр для обработки пересечения двух массивов
 // честный и быстрый разбор отсюда http://stackoverflow.com/questions/22024631/angularjs-filter-based-on-array-of-strings
