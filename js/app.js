@@ -31,6 +31,10 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
     $scope.noMorePokemons=false;
     $scope.showDetailsOfPokemon=false;
     $scope.globalFilterCheck=true;
+    $scope.pinned=true;
+    $scope.loadingPokemons=false;
+    $scope.initialLoadCompleted=false;
+    $scope.headerVisible=true;
     
     
     //здесь лежит основная модель
@@ -52,7 +56,7 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
         $scope.visiblePokemons=data.objects;
         $scope.nextPokemons=data.meta.next;
         $scope.offset+=$scope.limit;
-        
+        $scope.initialLoadCompleted=true;
     });
 
     Types.get({},function (data) {
@@ -73,19 +77,31 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
     $scope.switchToPokemon = function (pokemon) {
         $scope.selectedPokemon=pokemon;
         $scope.showDetailsOfPokemon=true;
+        if(window.innerWidth<768){
+            window.scroll(0,0);
+        }
     
     };
+    
+ 
  
     //загрузка еще 12-ти покемончиков. 
     //руками пересчитываем смещение
     $scope.loadMore = function () {
         try{
+            //купируем асинхронный забор результатов пячем кнопку;
+            $scope.loadingPokemons=true;
+            
+            //забираем данные, впихиваем их в наш репитер
             Pokemons.get({limit:$scope.limit, offset:$scope.offset},function(data) {
                 if (data.meta.next===null){
                     $scope.noMorePokemons=true;
                 }
                 $scope.offset+=$scope.limit;
                 $scope.pokemons=$scope.pokemons.concat(data.objects);
+                
+                //все забралось -выпячиваем обратно
+                $scope.loadingPokemons=false;
             });
         } catch (err)
         {
@@ -110,6 +126,21 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
             $scope.showDetailsOfPokemon=false;
         }
      }
+    /**закрыть детальки
+     * 
+    */
+    $scope.closeDetails= function(){
+        $scope.showDetailsOfPokemon=false;
+    }
+    
+    $scope.pinDetails =function(){
+        $scope.pinned=!$scope.pinned;
+    }
+    
+    $scope.backToTop=function(){
+        window.scrollTo(0,0);
+    };
+
 
 });
 
@@ -130,6 +161,24 @@ pokemonListController.directive('pokeInfo',function() {
         templateUrl:'html/poke-info.html'
     };
 });
+
+
+//директива скролла
+pokemonListController.directive('scroll',function($window) {
+    debugger;
+   return function(scope, element, attrs) {
+        angular.element($window).bind("scroll", function() {
+            debugger;
+             if (this.pageYOffset >= 80) {
+                scope.headerVisible = true;
+             } else {
+                scope.headerVisible = false;
+             }
+            scope.$apply();
+        });
+    };
+});
+
 
 // сделяль кастомный фильтр для обработки пересечения двух массивов
 // честный и быстрый разбор отсюда http://stackoverflow.com/questions/22024631/angularjs-filter-based-on-array-of-strings

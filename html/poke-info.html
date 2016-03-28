@@ -1,12 +1,20 @@
-<img class='image-responsive'  ng-src="https://pokeapi.co/media/img/{{selectedPokemon.pkdx_id}}.png" alt="{{selectedPokemon.name}}" />
-<div><b>{{selectedPokemon.name}} #{{selectedPokemon.pkdx_id}}</b></div>
-<table class='table'>
+<div class='poke-detail-card'>
+    <div class='col-md-12 text-right'>
+    <!--пришпилить к центру екрана чтобы не улетало. по умолчанию вкл-->
+    <button ng-class="['btn', 'btn-xs',{'btn-warning':pinned},{'btn-default':!pinned}, 'glyphicon', 'glyphicon-pushpin']" ng-click='pinDetails()'></button>
+    <!--сховати інфу про покемончика-->
+    <button class='btn btn-xs  btn-danger glyphicon glyphicon-remove' ng-click='closeDetails()'></button>
+    </div>
+    <img class='image-responsive center'  ng-src="https://pokeapi.co/media/img/{{selectedPokemon.pkdx_id}}.png" alt="{{selectedPokemon.name}}" />
+    <div><b>{{selectedPokemon.name}} #{{selectedPokemon.pkdx_id}}</b></div>
+    <!--не мудрствуя - стандартную бутстраповскую табличку-->
+    <table class='table'>
     <tr>
         <td>Type</td>
         <td>
-            <div ng-repeat="type in selectedPokemon.types">
-                <span ng-class="[type.name]">{{type.name}} </span>
-            </div>
+            <span ng-repeat="type in selectedPokemon.types">
+                <span ng-class="[type.name]">{{type.name}} </span><span> </span>
+            </span>
         </td>
     </tr>
     <tr>
@@ -41,4 +49,5 @@
         <td>Total moves</td>
         <td>{{selectedPokemon.moves.length}}</td>
     </tr>
-</table>
+    </table>
+</div>

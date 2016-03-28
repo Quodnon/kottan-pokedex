@@ -7,15 +7,20 @@
     background-color: #ffdea3;  
 }
 
-.pokemon-list{
-    background-color: #ffefd2;
- 
+  
+#showHideAll{
+    margin-bottom: 10px;
 }
- 
 .PokeCard{
+    /*вместо бордера чтобы не сожрать лишних пикселей в колонках*/
     outline:1px solid orange;
     height: 220px;
     margin-bottom: 10px;
+    background-color: #ffefd2 !important;
+}
+
+.poke-detail-card{
+    outline:1px solid orange;
 }
 
 /* ничего себе! пришлось сделать медиа-запрос для того,
@@ -31,13 +36,37 @@
         position: fixed;
     }
 }
+.back-to-top {
+    position: fixed;
+    margin-left: 80%;
+    bottom: 20px;
+    right: 20px;
+    border:1px solid white;
+    z-index: 99;
+    display: none;
+}
+
+.back-to-top-visible {
+    display: block !important;
+}
+
+/*чтобы в фильтрах не разбивалась галка и лейбл*/
+.filter-wrapper{
+    display: inline-block;
+}
+
 .poke-title{
     word-break: break-all;
 }
 
+
+
 .type{
     margin-right: 3px;
 }
+
+
+/*классы для типов покемона всё стандартно*/
 .normal{
     background-color: white;
     color: black;

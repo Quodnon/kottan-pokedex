@@ -13,7 +13,7 @@
 <!-- убитись вареником, в еджі  на запити з цдн валяться помилки 403 ,хоча все працює
 лінк на помилку
 http://stackoverflow.com/questions/33533605/twitter-bootstrap-alpha-4-0-404-403-response-from-cdns-in-ms-edge
-зміна протоколу нічого не дасть -->
+зміна протоколу нічого не дасть якщо завтра 270316 буде повторюватись -доведеться включати файл в проект-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 <!--angular from cdn-->
@@ -35,28 +35,38 @@ http://stackoverflow.com/questions/33533605/twitter-bootstrap-alpha-4-0-404-403-
     <div class='container'  ng-controller="pokemonListController">
         <!--FILTERS---->
         <div class="row filter-area">
-            <button id='showHideAll' ng-click='selDesFilters()' class='btn btn-warning btn-xs col-lg-2 col-md-2 col-sm-2 col-xs-6'>all</button>
-            <span class='col-lg-2 col-md-2 col-sm-2 col-xs-6' ng-repeat="type in pokeTypes | availableTypes:pokemons">
-                <input type="checkbox" ng-click='filterType()' ng-model='type.checked' ng-hide="itemExistsInResults(type,pokemons)" ><span  ng-class='[type.name.toLowerCase()]'>{{type.name.toLowerCase()}}</span></input>
+            <button id='showHideAll' ng-click='selDesFilters()' ng-class="['btn' ,'btn-warning', 'glyphicon', {'glyphicon-unchecked':globalFilterCheck},{'glyphicon-ok':!globalFilterCheck}, 'btn-xs', 'span2']"></button>
+            <span class='span3' ng-repeat="type in pokeTypes | availableTypes:pokemons">
+                <div class='filter-wrapper' >
+                    <input id='filter_{type.name.toLowerCase()}' type="checkbox" ng-model='type.checked' ng-hide="itemExistsInResults(type,pokemons)" ><span ng-class='[type.name.toLowerCase(), "type"]' >{{type.name.toLowerCase()}}</span></input>
+                </div>                
             </span>
         </div>
+        <!--LOADER H1-->
+        <div ng-class=['col-md-12','col-sm-12','col-xs-12','col-lg-12'] ng-hide='initialLoadCompleted'>
+                <h1> POKEMONS ARE LOADING.....</h1>
+        </div>
         <!--CONTENT AREA-->
-        <div class='row' >
+        <div class='row' nh-show='initialLoadCompleted'>
             <!--POKEMON DETAILS-->
-            <div id='pokeDetailInfo' ng-class="['detail_container',{'col-lg-12':!showDetailsOfPokemon}, {'col-md-6':showDetailsOfPokemon}, {'col-sm-6':showDetailsOfPokemon},{'col-sm-push-6':showDetailsOfPokemon},{'col-md-push-6':showDetailsOfPokemon}]" ng-show='showDetailsOfPokemon' >
+            <div id='pokeDetailInfo' ng-class="[{'detail_container':pinned}, {'col-md-6':showDetailsOfPokemon}, {'col-sm-6':showDetailsOfPokemon},{'col-sm-push-6':showDetailsOfPokemon},{'col-md-push-6':showDetailsOfPokemon}]" ng-show='showDetailsOfPokemon' >
                 <poke-info id="detail_{{selectedPokemon.name}}"
-                    ng-class="['poke-details','text-center']" 
+                    ng-class="[{'poke-details':pinned},'text-center',{'col-md-3':pinned},{'col-md-11':!pinned},{'col-lg-11':!pinned}]" 
                     ng-model='selectedPokemon'>
                 </poke-info>
             </div>
             <!--POKEMON LIST-->
             <div id='pokeList' ng-class="['pokemon-list',{'col-lg-12':!showDetailsOfPokemon}, {'col-sm-6':showDetailsOfPokemon},{'col-sm-pull-6':showDetailsOfPokemon},{'col-md-6':showDetailsOfPokemon}, {'col-md-pull-6':showDetailsOfPokemon}]">
                 <div ng-repeat="pokemon in pokemons | selectedPoketype:pokeTypes ">
-                    <poke-card class='PokeCard col-md-4 col-lg-4 col-sm-6 col-xs-12' ng-click='switchToPokemon(pokemon)' ng-model="pokemon"></poke-card>
+                    <poke-card class='PokeCard col-md-4 col-lg-4 col-sm-6 col-xs-12 text-center' ng-click='switchToPokemon(pokemon)' ng-model="pokemon"></poke-card>
                 </div>
-                <button id='morePokemonsButton' class="btn-lg btn-warning col-md-12 col-sm-12 col-lg-12 col-xs-12" ng-hide="noMorePokemons" ng-click='loadMore()'>I NEED MOAR POKEMONS!</button>
+                <button id='morePokemonsButton' class="btn-lg btn-warning col-md-12 col-sm-12 col-lg-12 col-xs-12" ng-hide="noMorePokemons || loadingPokemons || !initialLoadCompleted" ng-click='loadMore()'>I NEED MOAR POKEMONS!</button>
+                <!--да, див выглядит как кнопка но ничего не делает-->
+                <div id='morePokemonsLoading' class="btn-lg btn-warning col-md-12 col-sm-12 col-lg-12 col-xs-12 text-center"  ng-show='loadingPokemons' >LOADING ....</div>
             </div>    
         </div>
+        <!--back-to-top-->
+        <button ng-class="['back-to-top','btn','btn-warning','glyphicon','glyphicon-arrow-up',{'back-to-top-visible':headerVisible}]" ng-click='backToTop()' ng-hide='headerVisible'></button>
     </div>
 </body>
 
