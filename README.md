@@ -7,9 +7,9 @@ DAS POKEDEX !
 
 Запуск
 ----------
-<a href='https://www.youtube.com/watch?v=XQEBzauVIlA'  target='_blank'>вмикаємо веселу музичку для душі та покотились</a>
+<a href='https://www.youtube.com/watch?v=XQEBzauVIlA'  target='voodo'>вмикаємо веселу музичку для душі та покотились</a>
 
-<a href='https://quodnon.github.io/kottan-pokedex/' target='_blank'>https://quodnon.github.io/kottan-pokedex/</a>
+<a href='https://quodnon.github.io/kottan-pokedex/' target='test-site'>https://quodnon.github.io/kottan-pokedex/</a>
 
 
 ---------------
