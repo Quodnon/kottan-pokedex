@@ -14,8 +14,9 @@
 лінк на помилку
 http://stackoverflow.com/questions/33533605/twitter-bootstrap-alpha-4-0-404-403-response-from-cdns-in-ms-edge
 зміна протоколу нічого не дасть якщо завтра 270316 буде повторюватись -доведеться включати файл в проект-->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">-->
+<link rel="stylesheet" href="css/bootstrap.min.css" >
+<link rel="stylesheet" href="css/bootstrap-theme.min.css" >
 <!--angular from cdn-->
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
 <!--add ng-source here-->
@@ -40,7 +41,7 @@ http://stackoverflow.com/questions/33533605/twitter-bootstrap-alpha-4-0-404-403-
             </span>
         </div>
         <!--LOADER H1 тупим пока загружаются покемоны-->
-        <div ng-class=['col-md-12','col-sm-12','col-xs-12','col-lg-12'] ng-hide='initialLoadCompleted'>
+        <div ng-class="['col-md-12','col-sm-12','col-xs-12','col-lg-12']" ng-hide='initialLoadCompleted'>
                 <h1> POKEMONS ARE LOADING.....</h1>
         </div>
         <!--CONTENT AREA-->
