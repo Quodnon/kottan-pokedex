@@ -141,6 +141,26 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
         window.scrollTo(0,0);
     };
 
+    $scope.reCountChecked = function () {
+        var visibleAndChecked=0,
+            visibleAndUnChecked=0,
+            visibleCount=0;
+        
+        for (var i=0;i<$scope.pokeTypes.length;i++){
+            if ($scope.pokeTypes[i].visible==true)   {
+                visibleCount++;
+            }
+            if ( $scope.pokeTypes[i].checked==true && $scope.pokeTypes[i].visible==true)
+            {
+                visibleAndChecked++;
+            }else if ( $scope.pokeTypes[i].checked==false && $scope.pokeTypes[i].visible==true){
+                visibleAndUnChecked++;
+            }
+        }
+        if(visibleAndChecked==visibleCount || visibleAndUnChecked==visibleCount){
+            $scope.globalFilterCheck=!$scope.globalFilterCheck;
+        }
+    }
     //прям в контроллере подписались на скролл.
     angular.element($window).bind("scroll", function() {
             debugger;
@@ -215,8 +235,10 @@ pokemonListController.filter('availableTypes', function () {
                 for( var j=0;j<pokemons[i].types.length;j++){
                     if(pokemons[i].types[j].name===type.name.toLowerCase()){
                         result=true;
+                        type.visible=true;
                         return result;
                     }else {
+                         type.visible=false;
                         continue
                     }
                 }

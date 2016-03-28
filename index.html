@@ -38,7 +38,7 @@ http://stackoverflow.com/questions/33533605/twitter-bootstrap-alpha-4-0-404-403-
             <button id='showHideAll' ng-click='selDesFilters()' ng-class="['btn' ,'btn-warning', 'glyphicon', {'glyphicon-unchecked':globalFilterCheck},{'glyphicon-ok':!globalFilterCheck}, 'btn-xs', 'span2']"></button>
             <span class='span3' ng-repeat="type in pokeTypes | availableTypes:pokemons">
                 <div class='filter-wrapper' >
-                    <input id='filter_{type.name.toLowerCase()}' type="checkbox" ng-model='type.checked' ng-hide="itemExistsInResults(type,pokemons)" ><span ng-class='[type.name.toLowerCase(), "type"]' >{{type.name.toLowerCase()}}</span></input>
+                    <input id='filter_{type.name.toLowerCase()}' type="checkbox" ng-change='reCountChecked()' ng-model='type.checked' ng-hide="itemExistsInResults(type,pokemons)" ><span ng-class='[type.name.toLowerCase(), "type"]' >{{type.name.toLowerCase()}}</span></input>
                 </div>                
             </span>
         </div>
