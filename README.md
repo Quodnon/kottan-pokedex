@@ -5,11 +5,11 @@ DAS POKEDEX !
 
 и всё пока. К делу.
 
-Запуск 
+Запуск //LAUNCH
 ----------
-<a href='https://www.youtube.com/watch?v=XQEBzauVIlA'  target='voodo'>музыка для ритма (не забываем про новую табу) и покотились</a>
+1.  <a href='https://www.youtube.com/watch?v=XQEBzauVIlA'  target='voodo'>музыка для ритма (не забываем про новую табу) и покотились</a>
 
-<a href='https://quodnon.github.io/kottan-pokedex/' target='test-site'>https://quodnon.github.io/kottan-pokedex/</a> опять желательно в новой табе и да. покемоновское апи иногда не отдает несчатные 12 записей сразу  из-за корса на ихнем сервере печаль :whale: =( 
+2. <a href='https://quodnon.github.io/kottan-pokedex/' target='test-site'>https://quodnon.github.io/kottan-pokedex/</a> опять желательно в новой табе и да. покемоновское апи иногда не отдает несчатные 12 записей сразу  из-за корса на ихнем сервере печаль :whale: =( 
 
 
 ---------------
