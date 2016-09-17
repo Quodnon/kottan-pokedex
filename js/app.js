@@ -24,7 +24,17 @@ pokedexApp.factory("Types",function($resource) {
     return $resource(pokemonApiHost+"type/?limit=999");
 })
 
-
+var imageMiddleware = function(pokemons){
+    let goodImgPkdx = pokemons.map(pokemon=>{
+        let id = pokemon.pkdx_id,
+            img ='';
+        if (id<10) {img+='0'}
+        if (id<100) {img+='0';}
+        pokemon.pkdx_img=img+id.toString();
+        return pokemon
+    })
+    return goodImgPkdx
+}
 //контроллер. сделал единственный чтобы не перебрасываться скоупами.. нутакое
 var pokemonListController=pokedexApp.controller("pokemonListController",function($scope,Pokemons,$window,Types){
     //переменные
@@ -58,7 +68,7 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
     /*РАБОТА С АПИ*/
     //получение базового массива покемонов в самом начале
     Pokemons.get({limit:$scope.limit, offset:$scope.offset},function(data){
-        $scope.pokemons=data.objects;
+        $scope.pokemons=imageMiddleware(data.objects);
         $scope.visiblePokemons=data.objects;
         $scope.nextPokemons=data.meta.next;
         $scope.offset+=$scope.limit;
@@ -108,7 +118,7 @@ var pokemonListController=pokedexApp.controller("pokemonListController",function
                     $scope.noMorePokemons=true;
                 }
                 $scope.offset+=$scope.limit;
-                $scope.pokemons=$scope.pokemons.concat(data.objects);
+                $scope.pokemons=$scope.pokemons.concat(imageMiddleware(data.objects));
                 
                 //все забралось -выпячиваем обратно
                 $scope.loadingPokemons=false;
