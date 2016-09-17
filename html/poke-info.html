@@ -5,7 +5,10 @@
     <!--сховати інфу про покемончика-->
     <button class='btn btn-xs  btn-danger glyphicon glyphicon-remove' ng-click='closeDetails()'></button>
     </div>
-    <img class='image-responsive center'  ng-src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/media/img/{{selectedPokemon.pkdx_id}}.png" alt="{{selectedPokemon.name}}" />
+    <img class='image-responsive center'  ng-src="http://assets.pokemon.com/assets/cms2/img/pokedex/detail/{{(s=>{var st='' ;
+        if (s<10) st=+'0';
+        if (s<100) st=+'0';
+        st+=s.toString})(selectedPokemon.pkdx_id)}}.png" alt="{{selectedPokemon.name}}" />
     <div><b>{{selectedPokemon.name}} #{{selectedPokemon.pkdx_id}}</b></div>
     <!--не мудрствуя - стандартную бутстраповскую табличку-->
     <table class='table'>
