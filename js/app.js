@@ -25,8 +25,7 @@ pokedexApp.factory("Types",function($resource) {
 })
 
 var imageMiddleware = function(pokemons){
-    debugger
-    let goodimgokemons = pokemons.map(pokemon=>{
+    let goodImgPkdx = pokemons.map(pokemon=>{
         let id = pokemon.pkdx_id,
             img ='';
         if (id<10) {img+='0'}
@@ -34,7 +33,7 @@ var imageMiddleware = function(pokemons){
         pokemon.pkdx_img=img+id.toString();
         return pokemon
     })
-    return goodimgokemons
+    return goodImgPkdx
 }
 //контроллер. сделал единственный чтобы не перебрасываться скоупами.. нутакое
 var pokemonListController=pokedexApp.controller("pokemonListController",function($scope,Pokemons,$window,Types){
