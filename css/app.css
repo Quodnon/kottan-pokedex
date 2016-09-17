@@ -11,12 +11,15 @@
 #showHideAll{
     margin-bottom: 10px;
 }
-.PokeCard{
+.poke-card{
     /*вместо бордера чтобы не сожрать лишних пикселей в колонках*/
     outline:1px solid orange;
     height: 220px;
     margin-bottom: 10px;
     background-color: #ffefd2 !important;
+}
+.poke-card>img {
+    height: 150px;
 }
 
 .poke-detail-card{
