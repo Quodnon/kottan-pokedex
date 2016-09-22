@@ -5,7 +5,6 @@ DAS POKEDEX !
 
 Запуск //LAUNCH
 ----------
-1.  <a href='https://www.youtube.com/watch?v=XQEBzauVIlA'  target="_blank">музыка для ритма и покотились</a>
 
 2. <a href='https://quodnon.github.io/kottan-pokedex/' target="_blank">https://quodnon.github.io/kottan-pokedex/</a> опять желательно в новой табе и да. покемоновское апи иногда не отдает несчатные 12 записей сразу  из-за корса на ихнем сервере печаль :whale: =( 
 
